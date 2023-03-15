@@ -11,7 +11,13 @@ http.createServer(function (req, res) {
       let time = new Date().getTime();
       console.log(time);
 
-      var newpath = '/Users/duyle/Downloads/FPoly2023/MOB402-ServerAndroid/' + time + files.filetoupload.originalFilename;
+      let fileName = files.filetoupload.originalFilename.toString();
+      //var s = '';
+      names = fileName.split('.');
+      newFileName = names[0] + time + "." + names[1];
+      console.log(newFileName);
+
+      var newpath = '/Users/duyle/Downloads/Temp/' + newFileName;
 
       fs.rename(oldpath, newpath, function (err) {
         if (err) throw err;
